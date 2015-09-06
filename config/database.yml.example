@@ -5,11 +5,11 @@ default: &default
 
 development:
   <<: *default
-  database: babblings_development
+  database: babblings_api_development
 
 test:
   <<: *default
-  database: babblings_test
+  database: babblings_api_test
 
 production:
   url: <%= ENV['DATABASE_URL'] %>

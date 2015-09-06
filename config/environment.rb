@@ -12,6 +12,7 @@ ActiveRecord::Base.raise_in_transactional_callbacks = true
 
 paths = [
   Dir['lib/**/*.rb'],
+  Dir['app/uploaders/*rb'],
   Dir['app/**/*.rb'],
   Dir['config/initializers/*.rb']
 ]

@@ -1,17 +1,17 @@
 class CreateImage
   def self.perform(params)
-    new(content: params[:content]).perform
+    new(url: params[:url]).perform
   end
 
-  def initialize(content:)
-    @content = content
+  def initialize(url:)
+    @url = url
   end
 
   def perform
-    Image.find_or_create_by(content: content)
+    Image.find_or_create_by(origin: url) { |i| i.remote_source_url = url }
   end
 
   private
 
-  attr_reader :content
+  attr_reader :url
 end

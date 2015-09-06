@@ -1,11 +1,14 @@
 ENV['RACK_ENV'] = 'test'
 
 require './config/environment'
-require 'spec/support/json_helpers'
+require 'carrierwave/test/matchers'
+
+Dir['spec/support/**/*.rb'].each { |f| require f }
 
 FactoryGirl.find_definitions
 
 RSpec.configure do |config|
+  config.include CarrierWave::Test::Matchers
   config.include FactoryGirl::Syntax::Methods
   config.include JSONHelpers
   config.include Rack::Test::Methods
@@ -25,6 +28,16 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+  end
+
+  # Carrierwave
+  config.after(:each) do
+    ImageUploader.enable_processing = false
+  end
+
+  config.after(:all) do
+    upload_directory = ImageUploader.new.store_dir
+    FileUtils.rm_rf(Dir[upload_directory])
   end
 
   def app

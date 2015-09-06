@@ -24,8 +24,9 @@ gem 'grape-entity', '~> 0.4.8'
 # Datastore
 gem 'pg', '~> 0.18.2'
 
-# Client
-gem 'sinatra'
+# Uploaders
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'mini_magick', '~> 4.3.3'
 
 # Debugging Tools
 gem 'pry'

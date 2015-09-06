@@ -2,4 +2,5 @@
 .rspec
 config/database.yml
 log
+uploads
 vendor/bundle

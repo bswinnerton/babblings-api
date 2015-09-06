@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 RSpec.describe API::V1::ImagesAPI do
-  let(:content) { 'http://i.imgur.com/d9S1zFo.jpg' }
+  let(:source) { 'http://i.imgur.com/d9S1zFo.jpg' }
 
   describe 'GET /api/v1/images' do
-    let!(:images) { create_list :image, 5, content: Faker::Avatar.image }
+    let!(:images) { create_list :image, 3, remote_source_url: Faker::Avatar.image }
 
     before { get '/api/v1/images' }
 
@@ -15,7 +15,7 @@ RSpec.describe API::V1::ImagesAPI do
   end
 
   describe 'GET /api/v1/images/:id' do
-    let!(:image) { create :image, content: content }
+    let!(:image) { create :image, remote_source_url: source }
 
     before { get "/api/v1/images/#{id}" }
 
@@ -25,7 +25,7 @@ RSpec.describe API::V1::ImagesAPI do
       it 'returns the image' do
         expect(parsed_response).to eq({
           id: image.id,
-          content: image.content,
+          content: image.source.current_path,
           width: image.width,
           height: image.height,
           ratio: image.ratio,
@@ -37,15 +37,18 @@ RSpec.describe API::V1::ImagesAPI do
   end
 
   describe 'POST /api/v1/images' do
-    let(:content) { Faker::Avatar.image }
+    let(:origin) { Faker::Avatar.image }
 
-    before { post '/api/v1/images', params }
+    before do
+      allow(CreateImage).to receive(:perform).and_return double
+      post '/api/v1/images', params
+    end
 
     context 'with valid parameters' do
-      let(:params) { {content: content} }
+      let(:params) { {url: origin} }
 
       it 'creates the image' do
-        expect(parsed_response.fetch(:content)).to eq content
+        expect(CreateImage).to have_received(:perform)
       end
     end
 
@@ -55,7 +58,7 @@ RSpec.describe API::V1::ImagesAPI do
       it 'returns an error' do
         expect(parsed_response).to eq({
           errors: {
-            content: [
+            url: [
               {error: 'is_missing'}
             ]
           }

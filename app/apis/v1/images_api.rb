@@ -24,10 +24,10 @@ module API::V1
 
 
       params do
-        requires :content,
+        requires :url,
           type: String,
           allow_blank: false,
-          desc: 'The main content / URL of the image'
+          desc: 'The URL of the image'
       end
       post do
         image = CreateImage.perform(declared_params)

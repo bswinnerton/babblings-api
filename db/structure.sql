@@ -49,7 +49,8 @@ SET default_with_oids = false;
 
 CREATE TABLE images (
     id integer NOT NULL,
-    content text NOT NULL,
+    source text,
+    origin text,
     width integer,
     height integer,
     ratio double precision,

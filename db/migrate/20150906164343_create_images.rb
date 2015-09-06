@@ -1,7 +1,8 @@
 class CreateImages < ActiveRecord::Migration
   def change
     create_table :images do |t|
-      t.text :content, null: false
+      t.text :source
+      t.text :origin
       t.integer :width
       t.integer :height
       t.float :ratio
