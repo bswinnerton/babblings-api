@@ -29,11 +29,13 @@ module API
 
     rescue_from :all do |exception|
       #Honeybadger.notify(exception) #TODO
-      show_exception_backtrace = ENV['SHOW_EXCEPTION_BACKTRACE'] == 'true'
+      show_exception_backtrace = (ENV['SHOW_EXCEPTION_BACKTRACE'] == 'true')
 
       payload = {error: 'Internal Server Error'} #TODO: unify format of JSON API
       payload.merge!(title: exception.message, data: exception.backtrace) if show_exception_backtrace
       error!(payload, 500)
     end
+
+    mount API::V1::ImagesAPI
   end
 end
