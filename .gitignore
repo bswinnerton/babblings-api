@@ -1,0 +1,5 @@
+.env
+.rspec
+config/database.yml
+log
+vendor/bundle
