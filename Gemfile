@@ -24,6 +24,9 @@ gem 'grape-entity', '~> 0.4.8'
 # Datastore
 gem 'pg', '~> 0.18.2'
 
+# Soft Deletes
+gem 'paranoia', '~> 2.0'
+
 # Uploaders
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick', '~> 4.3.3'

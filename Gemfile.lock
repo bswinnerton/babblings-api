@@ -88,6 +88,8 @@ GEM
     minitest (5.8.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
+    paranoia (2.1.3)
+      activerecord (~> 4.0)
     pg (0.18.3)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -151,6 +153,7 @@ DEPENDENCIES
   grape-entity (~> 0.4.8)
   hashie-forbidden_attributes
   mini_magick (~> 4.3.3)
+  paranoia (~> 2.0)
   pg (~> 0.18.2)
   pry
   puma (~> 2.13.4)

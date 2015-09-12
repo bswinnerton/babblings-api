@@ -65,4 +65,30 @@ RSpec.describe API::V1::ImagesAPI do
       end
     end
   end
+
+  describe 'DELETE /api/v1/images/:id' do
+    let(:make_request) { delete "/api/v1/images/", id: image.id }
+
+    before { |spec| make_request unless spec.metadata[:skip_request] }
+
+    context 'image already exists' do
+      let!(:image) { create :image }
+
+      it 'returns a 200 OK' do
+        expect(last_response.status).to eq 200
+      end
+
+      it 'deletes the image', skip_request: true do
+        expect { make_request }.to change { Image.count }.from(1).to(0)
+      end
+    end
+
+    context 'image does not exist' do
+      let(:image) { double(id: 1) }
+
+      it 'returns a 404 not found' do
+        expect(last_response.status).to eq 404
+      end
+    end
+  end
 end

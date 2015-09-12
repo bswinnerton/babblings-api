@@ -103,6 +103,13 @@ ALTER TABLE ONLY images
 
 
 --
+-- Name: index_images_on_deleted_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_images_on_deleted_at ON images USING btree (deleted_at);
+
+
+--
 -- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
