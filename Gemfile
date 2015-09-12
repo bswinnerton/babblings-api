@@ -2,7 +2,7 @@ ruby '2.2.3'
 source 'https://rubygems.org'
 
 # Environment Variables
-gem 'dotenv', '~> 2.0.2', groups: [:development, :test]
+gem 'dotenv', '~> 2.0.2'
 
 # Server
 gem 'puma', '~> 2.13.4', require: false
