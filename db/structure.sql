@@ -53,7 +53,6 @@ CREATE TABLE images (
     origin text,
     width integer,
     height integer,
-    ratio double precision,
     deleted_at timestamp without time zone,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL

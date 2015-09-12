@@ -5,7 +5,6 @@ class CreateImages < ActiveRecord::Migration
       t.text :origin
       t.integer :width
       t.integer :height
-      t.float :ratio
       t.datetime :deleted_at
 
       t.timestamps null: false

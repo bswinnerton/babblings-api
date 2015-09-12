@@ -28,7 +28,6 @@ RSpec.describe API::V1::ImagesAPI do
           content: image.source.current_path,
           width: image.width,
           height: image.height,
-          ratio: image.ratio,
           created_at: image.created_at.to_formatted_s(:iso8601),
           updated_at: image.updated_at.to_formatted_s(:iso8601),
         })
