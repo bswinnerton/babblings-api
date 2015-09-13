@@ -36,6 +36,11 @@ gem 'fog', '~> 1.25'
 gem 'pry'
 gem 'racksh', '~> 1.0.0'
 
+group :production do
+  # Exception Tracking
+  gem 'raygun4ruby'
+end
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

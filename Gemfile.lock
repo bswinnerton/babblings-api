@@ -180,6 +180,9 @@ GEM
     hashie-forbidden_attributes (0.1.1)
       hashie (>= 3.0)
     hitimes (1.2.2)
+    httparty (0.13.5)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     ice_nine (0.11.1)
     inflecto (0.0.2)
@@ -220,6 +223,10 @@ GEM
       rack (>= 1.0)
       rack-test (>= 0.5)
     rake (10.4.2)
+    raygun4ruby (1.1.6)
+      httparty (~> 0.11)
+      json
+      rack
     rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -274,6 +281,7 @@ DEPENDENCIES
   rack-test (~> 0.6.2)
   racksh (~> 1.0.0)
   rake (~> 10.4.2)
+  raygun4ruby
   rerun (~> 0.10.0)
   rspec (~> 3.0.0)
 
