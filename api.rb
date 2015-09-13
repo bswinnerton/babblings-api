@@ -28,7 +28,7 @@ module API
     end
 
     rescue_from :all do |exception|
-      Raygun.track_exception(exception) if defined? Raygun
+      Raygun.track_exception(exception)
       show_exception_backtrace = (ENV['SHOW_EXCEPTION_BACKTRACE'] == 'true')
 
       payload = {error: 'Internal Server Error'} #TODO: unify format of JSON API

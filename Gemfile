@@ -36,10 +36,8 @@ gem 'fog', '~> 1.25'
 gem 'pry'
 gem 'racksh', '~> 1.0.0'
 
-group :production do
-  # Exception Tracking
-  gem 'raygun4ruby'
-end
+# Exception Tracking
+gem 'raygun4ruby'
 
 group :development do
   gem 'better_errors'
