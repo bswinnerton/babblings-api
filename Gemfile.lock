@@ -268,7 +268,7 @@ DEPENDENCIES
   dotenv (~> 2.0.2)
   factory_girl (~> 4.0)
   faker (~> 1.5.0)
-  fog (~> 1.25)
+  fog
   grape (~> 0.12.0)
   grape-activerecord (~> 1.0.3)
   grape-entity (~> 0.4.8)

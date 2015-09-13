@@ -30,7 +30,7 @@ gem 'paranoia', '~> 2.0'
 # Uploaders
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave', ref: 'c2ee2e8'
 gem 'mini_magick', '~> 4.3.3'
-gem 'fog', '~> 1.25'
+gem 'fog', require: 'fog/aws'
 
 # Debugging Tools
 gem 'pry'

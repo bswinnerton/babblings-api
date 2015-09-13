@@ -21,7 +21,6 @@ class ImageUploader < CarrierWave::Uploader::Base
     return unless model.attributes.keys.include? 'width'
     return unless model.attributes.keys.include? 'height'
 
-    height, width = MiniMagick::Image.open(file.file).dimensions
-    model.update(height: height, width: width)
+    model.height, model.width = MiniMagick::Image.open(file.file).dimensions
   end
 end

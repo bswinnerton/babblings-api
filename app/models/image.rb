@@ -7,6 +7,6 @@ class Image < ActiveRecord::Base
   acts_as_paranoid
 
   def content
-    source.current_path
+    source.url
   end
 end

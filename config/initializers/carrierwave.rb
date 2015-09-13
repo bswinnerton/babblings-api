@@ -10,6 +10,7 @@ CarrierWave.configure do |config|
     config.fog_attributes = { 'Cache-Control' => "max-age=#{365.day.to_i}" }
   else
     config.storage = :file
+    config.root = Rack::Directory.new('').root
     config.enable_processing = false
   end
 end
