@@ -28,8 +28,9 @@ gem 'pg', '~> 0.18.2'
 gem 'paranoia', '~> 2.0'
 
 # Uploaders
-gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave', ref: 'c2ee2e8'
 gem 'mini_magick', '~> 4.3.3'
+gem 'fog', '~> 1.25'
 
 # Debugging Tools
 gem 'pry'

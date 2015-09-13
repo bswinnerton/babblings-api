@@ -36,8 +36,7 @@ RSpec.configure do |config|
   end
 
   config.after(:all) do
-    upload_directory = ImageUploader.new.store_dir
-    FileUtils.rm_rf(Dir[upload_directory])
+    FileUtils.rm_rf(Dir[ImageUploader::BASE_STORE_DIR])
   end
 
   def app

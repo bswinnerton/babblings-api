@@ -4,6 +4,8 @@ Model = Class.new do
   ATTRS = %w(width height)
   attr_accessor *ATTRS.map(&:to_sym)
 
+  def id; 42; end
+
   def attributes
     OpenStruct.new(keys: ATTRS)
   end
