@@ -43,8 +43,6 @@ gem 'racksh', '~> 1.0.0'
 gem 'raygun4ruby'
 
 group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
   gem 'rerun', '~> 0.10.0'
 end
 
