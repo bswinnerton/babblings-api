@@ -10,9 +10,6 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def store_dimensions
     return unless file && model
-    return unless model.attributes.keys.include? 'width'
-    return unless model.attributes.keys.include? 'height'
-
     model.height, model.width = MiniMagick::Image.open(file.file).dimensions
   end
 
