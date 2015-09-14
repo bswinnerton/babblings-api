@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 RSpec.describe API::V1::ImagesAPI do
-  let(:source) { 'http://i.imgur.com/d9S1zFo.jpg' }
-
   describe 'GET /api/v1/images' do
     let!(:images) { create_list :image, 30, remote_source_url: Faker::Avatar.image }
 
@@ -28,6 +26,7 @@ RSpec.describe API::V1::ImagesAPI do
   end
 
   describe 'GET /api/v1/images/:id' do
+    let(:source) { 'http://i.imgur.com/d9S1zFo.jpg' }
     let!(:image) { create :image, remote_source_url: source }
 
     before { get "/api/v1/images/#{id}" }
@@ -88,7 +87,7 @@ RSpec.describe API::V1::ImagesAPI do
       let!(:image) { create :image }
 
       it 'returns a 200 OK' do
-        expect(last_response.status).to eq 200
+        expect(response_code).to eq 200
       end
 
       it 'deletes the image', skip_request: true do
@@ -100,7 +99,7 @@ RSpec.describe API::V1::ImagesAPI do
       let(:image) { double(id: 1) }
 
       it 'returns a 404 not found' do
-        expect(last_response.status).to eq 404
+        expect(response_code).to eq 404
       end
     end
   end

@@ -8,7 +8,7 @@ class CreateImage
   end
 
   def perform
-    Image.find_or_create_by(origin: url) { |i| i.remote_source_url = url }
+    Image.find_or_create_by!(origin: url) { |i| i.remote_source_url = url }
   end
 
   private

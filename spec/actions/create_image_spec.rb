@@ -6,9 +6,12 @@ RSpec.describe CreateImage do
 
   subject { CreateImage.perform(params) }
 
-  before { allow_any_instance_of(ImageUploader).to receive(:download!) }
-
   context 'new image' do
+    it 'downloads the image', allow_uploader_requests: true, vcr: true do
+      path = "#{ImageUploader.root}/#{ImageUploader::BASE_STORAGE_PATH}/*/*.*"
+      expect { subject }.to change { Dir[path].count }.by(3)
+    end
+
     it 'creates the image' do
       expect { subject }.to change { Image.count }.by(1)
     end

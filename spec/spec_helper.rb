@@ -1,8 +1,6 @@
 ENV['RACK_ENV'] = 'test'
 
-require 'webmock/rspec'
-WebMock.disable_net_connect!(allow: 'codeclimate.com')
-
+require 'support/vcr'
 require 'support/code_climate'
 require './config/environment'
 require 'carrierwave/test/matchers'
@@ -22,7 +20,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do |spec|
-    unless spec.metadata[:image_uploader_downloading]
+    unless spec.metadata[:allow_uploader_requests]
       allow_any_instance_of(ImageUploader).to receive(:download!)
     end
   end
