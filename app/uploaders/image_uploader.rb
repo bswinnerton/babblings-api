@@ -7,11 +7,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   version(:small)   { process resize_to_fill: [300, 300] }
 
   def store_dir
-    "uploads/#{ENV.fetch('RACK_ENV')}/images"
+    "uploads/#{ENV.fetch('RACK_ENV')}/images/#{model.id}"
   end
 
   def cache_dir
-    "uploads/#{ENV.fetch('RACK_ENV')}/images/tmp"
+    "uploads/#{ENV.fetch('RACK_ENV')}/images/#{model.id}/tmp"
   end
 
   private
