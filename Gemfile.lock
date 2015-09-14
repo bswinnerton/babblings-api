@@ -309,7 +309,6 @@ DEPENDENCIES
   grape-activerecord (~> 1.0.3)
   grape-entity (~> 0.4.8)
   grape-kaminari (~> 0.1.8)
-  hashie-forbidden_attributes
   mini_magick (~> 4.3.3)
   paranoia (~> 2.0)
   pg (~> 0.18.2)

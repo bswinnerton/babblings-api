@@ -16,7 +16,6 @@ gem 'grape-activerecord', '~> 1.0.3'
 
 # API
 gem 'grape', '~> 0.12.0'
-gem 'hashie-forbidden_attributes' # https://github.com/intridea/grape#rails
 
 # API Facade
 gem 'grape-entity', '~> 0.4.8'
