@@ -1,5 +1,9 @@
 ENV['RACK_ENV'] = 'test'
 
+require 'webmock/rspec'
+WebMock.disable_net_connect!(allow: 'codeclimate.com')
+
+require 'support/code_climate'
 require './config/environment'
 require 'carrierwave/test/matchers'
 

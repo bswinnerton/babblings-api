@@ -48,6 +48,8 @@ GEM
     builder (3.2.2)
     celluloid (0.16.0)
       timers (~> 4.0.0)
+    codeclimate-test-reporter (0.4.8)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -57,6 +59,7 @@ GEM
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     dotenv (2.0.2)
     equalizer (0.0.11)
     erubis (2.7.0)
@@ -270,6 +273,11 @@ GEM
       rspec-support (~> 3.0.0)
     rspec-support (3.0.4)
     safe_yaml (1.0.4)
+    simplecov (0.10.0)
+      docile (~> 1.1.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     slop (3.6.0)
     thread_safe (0.3.5)
     timers (4.0.4)
@@ -291,6 +299,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord (~> 4.2.3)
   carrierwave!
+  codeclimate-test-reporter
   database_cleaner (~> 1.3.0)
   dotenv (~> 2.0.2)
   factory_girl (~> 4.0)

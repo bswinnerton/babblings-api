@@ -53,4 +53,5 @@ group :test do
   gem 'database_cleaner', '~> 1.3.0'
   gem 'faker', '~> 1.5.0'
   gem 'webmock', '~> 1.21.0'
+  gem 'codeclimate-test-reporter', require: false
 end
