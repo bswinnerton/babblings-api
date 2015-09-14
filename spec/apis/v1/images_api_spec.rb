@@ -49,9 +49,10 @@ RSpec.describe API::V1::ImagesAPI do
 
   describe 'POST /api/v1/images' do
     let(:origin) { Faker::Avatar.image }
+    let(:image) { create(:image) }
 
     before do
-      allow(CreateImage).to receive(:perform).and_return double
+      allow(CreateImage).to receive(:perform).and_return image
       post '/api/v1/images', params
     end
 
@@ -67,13 +68,12 @@ RSpec.describe API::V1::ImagesAPI do
       let(:params) { }
 
       it 'returns an error' do
-        expect(parsed_response).to eq({
-          errors: {
-            url: [
-              {error: 'is_missing'}
-            ]
+        expect(parsed_response).to eq [
+          {
+            params: ['url'],
+            messages: ['is missing', 'is empty']
           }
-        })
+        ]
       end
     end
   end

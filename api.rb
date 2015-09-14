@@ -11,16 +11,11 @@ module API
     helpers ParamsHelpers
 
     rescue_from Grape::Exceptions::ValidationErrors do |exception|
-      errors = exception.errors.each_with_object({}) do |(field, error), hash|
-        key = field.first.split(/\[(.*?)\]/).last
-        hash[key] = [error: error.first.message.sub(' ', '_')]
-      end
-
-      error_response(message: { errors: errors }, status: 400)
+      error!(exception, 400)
     end
 
     rescue_from ActiveRecord::RecordNotFound do |exception|
-      error_response(message: 'Not found', status: 404)
+      error!('Not found', 404)
     end
 
     rescue_from ActiveRecord::RecordInvalid do |exception|
@@ -28,12 +23,9 @@ module API
     end
 
     rescue_from :all do |exception|
+      API::Root.logger.error(exception)
       Raygun.track_exception(exception, env)
-      show_exception_backtrace = (ENV['SHOW_EXCEPTION_BACKTRACE'] == 'true')
-
-      payload = {error: 'Internal Server Error'} #TODO: unify format of JSON API
-      payload.merge!(title: exception.message, data: exception.backtrace) if show_exception_backtrace
-      error!(payload, 500)
+      error!('Internal Server Error', 500)
     end
 
     mount API::V1::ImagesAPI
