@@ -21,6 +21,9 @@ gem 'hashie-forbidden_attributes' # https://github.com/intridea/grape#rails
 # API Facade
 gem 'grape-entity', '~> 0.4.8'
 
+# API Pagination
+gem 'grape-kaminari', '~> 0.1.8'
+
 # Datastore
 gem 'pg', '~> 0.18.2'
 

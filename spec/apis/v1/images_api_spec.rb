@@ -4,13 +4,26 @@ RSpec.describe API::V1::ImagesAPI do
   let(:source) { 'http://i.imgur.com/d9S1zFo.jpg' }
 
   describe 'GET /api/v1/images' do
-    let!(:images) { create_list :image, 3, remote_source_url: Faker::Avatar.image }
+    let!(:images) { create_list :image, 30, remote_source_url: Faker::Avatar.image }
 
-    before { get '/api/v1/images' }
+    before { get '/api/v1/images', params }
 
-    it 'returns all of the images' do
-      image_ids = parsed_response.map { |image| image.fetch(:id) }
-      expect(image_ids).to match_array images.map(&:id)
+    context 'first page' do
+      let(:params) { }
+
+      it 'returns the first 25 images' do
+        image_ids = parsed_response.map { |image| image.fetch(:id) }
+        expect(image_ids).to match_array images.last(25).map(&:id)
+      end
+    end
+
+    context 'second page' do
+      let(:params) { {page: 2} }
+
+      it 'returns the last 5 images' do
+        image_ids = parsed_response.map { |image| image.fetch(:id) }
+        expect(image_ids).to match_array images.first(5).map(&:id)
+      end
     end
   end
 

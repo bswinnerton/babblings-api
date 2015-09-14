@@ -1,10 +1,13 @@
 module API::V1
   class ImagesAPI < Grape::API
+    include Grape::Kaminari
+
     version 'v1'
 
     resources :images do
+      paginate
       get do
-        images = Image.all #TODO: Add pagination
+        images = paginate(Image.all)
         present images, with: Entities::ImageEntity
       end
 
