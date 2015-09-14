@@ -10,11 +10,13 @@ Bundler.require(:default, ENV.fetch('RACK_ENV'))
 ActiveRecord::Base.schema_format = :sql
 ActiveRecord::Base.raise_in_transactional_callbacks = true
 
+require 'carrierwave/orm/activerecord'
+
 paths = [
   Dir['lib/**/*.rb'],
+  Dir['config/initializers/*.rb'],
   Dir['app/uploaders/*rb'],
-  Dir['app/**/*.rb'],
-  Dir['config/initializers/*.rb']
+  Dir['app/**/*.rb']
 ]
 
 # Sort each collection of paths alphabetically (globbing does not behave
