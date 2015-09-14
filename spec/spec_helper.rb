@@ -17,6 +17,12 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  config.before(:each) do |spec|
+    unless spec.metadata[:image_uploader_downloading]
+      allow_any_instance_of(ImageUploader).to receive(:download!)
+    end
+  end
+
   # Database Cleaner
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
