@@ -34,6 +34,9 @@ gem 'carrierwave', github: 'carrierwaveuploader/carrierwave', ref: 'c2ee2e8'
 gem 'mini_magick', '~> 4.3.3'
 gem 'fog', require: 'fog/aws'
 
+# Background processing
+gem 'sidekiq', '~> 3.5.0'
+
 # Debugging Tools
 gem 'pry'
 gem 'racksh', '~> 1.0.0'
@@ -42,7 +45,7 @@ gem 'racksh', '~> 1.0.0'
 gem 'raygun4ruby'
 
 group :development do
-  gem 'rerun', '~> 0.10.0'
+  gem 'rerun', '~> 0.10.0', github: 'alexch/rerun', ref: '65664e5'
 end
 
 group :test do
