@@ -14,8 +14,8 @@ the version manager of your choice
 2. Clone the application using `git`
 
     ```shell
-    git clone git@github.com:bswinnerton/babblings.git
-    cd babblings
+    git clone git@github.com:bswinnerton/babblings-api.git
+    cd babblings-api
     ```
 
 3. Create a `.env` file by copying the example (please see
