@@ -55,7 +55,8 @@ CREATE TABLE images (
     height integer,
     deleted_at timestamp without time zone,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    processing boolean DEFAULT false NOT NULL
 );
 
 
@@ -123,4 +124,6 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 SET search_path TO "$user",public;
 
 INSERT INTO schema_migrations (version) VALUES ('20150906164343');
+
+INSERT INTO schema_migrations (version) VALUES ('20150919135807');
 

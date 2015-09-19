@@ -10,6 +10,12 @@ module API
             desc: 'Image ID'
           }
 
+        expose :processing,
+          documentation: {
+            type: 'boolean',
+            desc: 'Whether the image is still being processed'
+          }
+
         expose :content,
           documentation: {
             type: 'string',
