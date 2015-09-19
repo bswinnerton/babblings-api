@@ -37,7 +37,8 @@ RSpec.describe API::V1::ImagesAPI do
       it 'returns the image' do
         expect(parsed_response).to eq({
           id: image.id,
-          content: image.source.url,
+          processing: image.processing,
+          content: image.content,
           width: image.width,
           height: image.height,
           created_at: image.created_at.to_formatted_s(:iso8601),

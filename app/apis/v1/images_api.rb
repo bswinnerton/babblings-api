@@ -33,6 +33,7 @@ module API::V1
           desc: 'The URL of the image'
       end
       post do
+        status 202
         image = CreateImage.perform(declared_params)
         present image, with: Entities::ImageEntity
       end
