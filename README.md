@@ -95,11 +95,6 @@ bundle exec rake db:create_migration NAME=create_<tablename>
 
   Sets whether to use S3 or filesystem storage for uploads - (`true` or `false`)
 
-- `SHOW_EXCEPTION_BACKTRACE`
-
-  Sets whether or not to display the exception backtrace in the API response. -
-  (`true` or `false`)
-
 - `TRACK_EXCEPTIONS`
 
   Sets whether or not exceptions should be sent to Raygun
