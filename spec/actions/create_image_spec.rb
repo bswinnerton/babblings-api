@@ -7,11 +7,6 @@ RSpec.describe CreateImage do
   subject { CreateImage.perform(params) }
 
   context 'new image' do
-    it 'downloads the image', allow_uploader_requests: true, vcr: true do
-      path = "#{ImageUploader.root}/#{ImageUploader::BASE_STORAGE_PATH}/*/*.*"
-      expect { subject }.to change { Dir[path].count }.by(3)
-    end
-
     it 'creates the image' do
       expect { subject }.to change { Image.count }.by(1)
     end
@@ -20,8 +15,12 @@ RSpec.describe CreateImage do
       expect(subject.origin).to eq url
     end
 
-    it 'sets a URL to view the uploaded image' do
-      expect(subject.source).to_not be_nil
+    it 'sets the image as processing' do
+      expect(subject.processing).to eq true
+    end
+
+    it 'enqueues the create image worker' do
+      expect { subject }.to change(CreateImageWorker.jobs, :size).by(1)
     end
   end
 

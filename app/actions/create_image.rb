@@ -1,4 +1,6 @@
 class CreateImage
+  attr_reader :existing_image, :image_being_processed, :url
+
   def self.perform(params)
     new(url: params[:url]).perform
   end
@@ -8,10 +10,19 @@ class CreateImage
   end
 
   def perform
-    Image.find_or_create_by!(origin: url) { |i| i.remote_source_url = url }
+    return existing_image if existing_image?
+    create_placeholder_image.tap { process_image_in_background }
   end
 
-  private
+  def existing_image?
+    @existing_image ||= Image.find_by(origin: url)
+  end
 
-  attr_reader :url
+  def create_placeholder_image
+    @image_being_processed ||= Image.create!(origin: url, processing: true)
+  end
+
+  def process_image_in_background
+    CreateImageWorker.perform_async(image_being_processed.id, url)
+  end
 end

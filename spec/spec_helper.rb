@@ -4,10 +4,13 @@ require 'support/vcr'
 require 'support/code_climate'
 require './config/environment'
 require 'carrierwave/test/matchers'
+require 'sidekiq/testing'
 
 Dir['spec/support/**/*.rb'].each { |f| require f }
 
 FactoryGirl.find_definitions
+
+Sidekiq::Testing.fake!
 
 RSpec.configure do |config|
   config.include CarrierWave::Test::Matchers
@@ -20,7 +23,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do |spec|
-    unless spec.metadata[:allow_uploader_requests]
+    unless spec.metadata[:uploader_requests_enabled]
       allow_any_instance_of(ImageUploader).to receive(:download!)
     end
   end
