@@ -71,4 +71,35 @@ bundle exec rake db:create_migration NAME=create_<tablename>
 
 ## Configuration
 
-TBA
+- `ACTIVE_RECORD_DEBUG`
+
+  Sets ActiveRecord's log level to `INFO` - (`true` or `false`)
+
+- `AWS_ACCESS_KEY_ID`
+
+  The IAM access key id for use with S3
+
+- `AWS_SECRET_ACCESS_KEY`
+
+  The IAM secret access key for use with S3
+
+- `CODECLIMATE_REPO_TOKEN`
+
+  The token used to communicate the code coverage to CodeClimate
+
+- `S3_BUCKET`
+
+  The bucket to store uploads to
+
+- `S3_UPLOADS_ENABLED`
+
+  Sets whether to use S3 or filesystem storage for uploads - (`true` or `false`)
+
+- `SHOW_EXCEPTION_BACKTRACE`
+
+  Sets whether or not to display the exception backtrace in the API response. -
+  (`true` or `false`)
+
+- `TRACK_EXCEPTIONS`
+
+  Sets whether or not exceptions should be sent to Raygun
