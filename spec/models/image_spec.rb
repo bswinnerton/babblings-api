@@ -6,6 +6,22 @@ RSpec.describe Image do
 
   subject { build_stubbed :image, width: width, height: height }
 
+  describe '#reprocess!' do
+    subject!(:image) do
+      create :image, origin: 'http://i.imgur.com/1UJxgwf.jpg', processing: true
+    end
+
+    it 'resets the remote source url' do
+      expect(image.source).to receive(:download!)
+      subject.reprocess!
+    end
+
+    it 'sets processing to false' do
+      subject.reprocess!
+      expect(image.processing).to eq false
+    end
+  end
+
   describe '#content' do
     context 'source is set' do
       let(:source) { 'https://i.imgur.com/eWFJI2i.png' }

@@ -4,6 +4,10 @@ class Image < ActiveRecord::Base
 
   default_scope { order(created_at: :desc) }
 
+  def reprocess!
+    update!(remote_source_url: origin, processing: false)
+  end
+
   def content
     source.url || placeholder
   end
