@@ -33,7 +33,6 @@ module API::V1
           desc: 'The URL of the YouTube video'
       end
       post do
-        status 202
         video = CreateYoutubeVideo.perform(declared_params)
         present video, with: Entities::YoutubeVideoEntity
       end
