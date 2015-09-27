@@ -6,6 +6,6 @@ class YoutubeVideo < ActiveRecord::Base
   validates :source, presence: true
 
   def content
-    "http://www.youtube.com/embed/#{youtube_id}?showinfo=0&controls=0"
+    "https://www.youtube.com/embed/#{youtube_id}?showinfo=0&controls=0"
   end
 end
