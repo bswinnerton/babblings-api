@@ -29,6 +29,7 @@ module API
     end
 
     mount API::V1::ImagesAPI
+    mount API::V1::VimeoVideosAPI
     mount API::V1::YoutubeVideosAPI
   end
 end

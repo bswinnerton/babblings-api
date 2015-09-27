@@ -89,6 +89,39 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: vimeo_videos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE vimeo_videos (
+    id integer NOT NULL,
+    source text NOT NULL,
+    vimeo_id text,
+    deleted_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: vimeo_videos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE vimeo_videos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: vimeo_videos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE vimeo_videos_id_seq OWNED BY vimeo_videos.id;
+
+
+--
 -- Name: youtube_videos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -132,6 +165,13 @@ ALTER TABLE ONLY images ALTER COLUMN id SET DEFAULT nextval('images_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY vimeo_videos ALTER COLUMN id SET DEFAULT nextval('vimeo_videos_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY youtube_videos ALTER COLUMN id SET DEFAULT nextval('youtube_videos_id_seq'::regclass);
 
 
@@ -141,6 +181,14 @@ ALTER TABLE ONLY youtube_videos ALTER COLUMN id SET DEFAULT nextval('youtube_vid
 
 ALTER TABLE ONLY images
     ADD CONSTRAINT images_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vimeo_videos_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY vimeo_videos
+    ADD CONSTRAINT vimeo_videos_pkey PRIMARY KEY (id);
 
 
 --
@@ -156,6 +204,13 @@ ALTER TABLE ONLY youtube_videos
 --
 
 CREATE INDEX index_images_on_deleted_at ON images USING btree (deleted_at);
+
+
+--
+-- Name: index_vimeo_videos_on_deleted_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_vimeo_videos_on_deleted_at ON vimeo_videos USING btree (deleted_at);
 
 
 --
@@ -183,4 +238,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150906164343');
 INSERT INTO schema_migrations (version) VALUES ('20150919135807');
 
 INSERT INTO schema_migrations (version) VALUES ('20150926142832');
+
+INSERT INTO schema_migrations (version) VALUES ('20150927133017');
 
