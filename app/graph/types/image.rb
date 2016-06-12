@@ -1,3 +1,5 @@
+require 'app/graph/node_identification'
+
 module Graph
   module Types
     Image = GraphQL::ObjectType.define do
