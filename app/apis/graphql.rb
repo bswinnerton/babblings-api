@@ -4,7 +4,7 @@ class App < Sinatra::Base
   end
 
   post '/graphql' do
-    Graph::Schema.execute(query, variables: params[:variables]).to_json
+    Graph::Schema.execute(query, variables: variables).to_json
   end
 
   private
