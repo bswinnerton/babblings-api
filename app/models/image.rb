@@ -1,4 +1,5 @@
 require 'app/uploaders/image_uploader'
+require 'app/models/concerns/graphqlable'
 
 class Image < ActiveRecord::Base
   include GraphQLable
