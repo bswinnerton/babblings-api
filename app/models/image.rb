@@ -1,6 +1,8 @@
 require 'app/uploaders/image_uploader'
 
 class Image < ActiveRecord::Base
+  include GraphQLable
+
   mount_uploader :source, ImageUploader
   acts_as_paranoid
 
