@@ -1,42 +1,35 @@
-ruby '2.2.3'
+ruby '2.3.1'
 source 'https://rubygems.org'
 
 # Environment Variables
-gem 'dotenv', '~> 2.0.2'
+gem 'dotenv'
 
 # Server
-gem 'puma', '~> 2.13.4', require: false
+gem 'puma', require: false
 
 # Tasks
-gem 'rake', '~> 10.4.2', require: false
+gem 'rake', require: false
 
 # ActiveRecord
-gem 'activerecord', '~> 4.2.3', require: 'active_record'
-gem 'grape-activerecord', '~> 1.0.3'
+gem 'activerecord'
+gem 'sinatra-activerecord'
 
 # API
-gem 'grape', '~> 0.12.0'
 gem 'sinatra'
 
-# API Facade
-gem 'grape-entity', '~> 0.4.8'
-
-# API Pagination
-gem 'grape-kaminari', '~> 0.1.8'
-
 # Datastore
-gem 'pg', '~> 0.18.2'
+gem 'pg'
 
 # Soft Deletes
-gem 'paranoia', '~> 2.0'
+gem 'paranoia'
 
 # Uploaders
-gem 'carrierwave', github: 'carrierwaveuploader/carrierwave', ref: 'c2ee2e8'
-gem 'mini_magick', '~> 4.3.3'
+gem 'carrierwave'
+gem 'mini_magick'
 gem 'fog', require: 'fog/aws'
 
 # Background processing
-gem 'sidekiq', '~> 3.5.0'
+gem 'sidekiq'
 
 # Debugging Tools
 gem 'pry'

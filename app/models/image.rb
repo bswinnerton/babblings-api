@@ -1,3 +1,5 @@
+require 'app/uploaders/image_uploader'
+
 class Image < ActiveRecord::Base
   mount_uploader :source, ImageUploader
   acts_as_paranoid
