@@ -20,6 +20,9 @@ gem 'sinatra'
 # Datastore
 gem 'pg'
 
+# Data Query Language
+gem 'graphql-relay'
+
 # Soft Deletes
 gem 'paranoia'
 
