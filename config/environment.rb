@@ -7,6 +7,7 @@ require 'bundler'
 Bundler.require(:default, ENV.fetch('RACK_ENV'))
 
 require 'carrierwave/orm/activerecord'
+ActiveRecord::Base.raise_in_transactional_callbacks = true
 
 paths = [
   Dir['config/initializers/*.rb'],
