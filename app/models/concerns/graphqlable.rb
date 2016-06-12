@@ -7,7 +7,7 @@ module GraphQLable
     def graphql_global_id
       klass = self.class.name
       id    = self.id
-      GraphQL::Relay::GlobalNodeIdentification.to_global_id(klass, id)
+      GraphQL::Relay::GlobalNodeIdentification.new.to_global_id(klass, id)
     end
   end
 end
