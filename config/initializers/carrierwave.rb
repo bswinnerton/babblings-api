@@ -11,6 +11,6 @@ CarrierWave.configure do |config|
   else
     config.storage = :file
     config.root = Rack::Directory.new('').root
-    config.enable_processing = false
+    config.enable_processing = true
   end
 end

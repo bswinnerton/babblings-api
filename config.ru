@@ -1,10 +1,5 @@
-require File.expand_path('../api', __FILE__)
-
-# https://github.com/jhollinger/grape-activerecord#important
-use ActiveRecord::ConnectionAdapters::ConnectionManagement
-
-use Raygun::Middleware::RackExceptionInterceptor
+require File.expand_path('../app', __FILE__)
 
 map '/' do
-  run API::Root
+  run App
 end
